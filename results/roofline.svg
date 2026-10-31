@@ -35,26 +35,26 @@
 <text x="60" y="109.7" fill="#94a3b8" font-size="11" text-anchor="end">2^5</text>
 <line x1="70" y1="40.0" x2="930" y2="40.0" stroke="#1e293b"/>
 <text x="60" y="44.0" fill="#94a3b8" font-size="11" text-anchor="end">2^6</text>
-<line x1="70.0" y1="299.5" x2="930.0" y2="-226.2" stroke="#f59e0b" stroke-width="2"/>
-<circle cx="285.0" cy="322.6" r="6" fill="#ef4444"/>
-<text x="295.0" y="314.6" fill="#ef4444" font-size="11">rmsnorm_residual/scalar</text>
-<circle cx="285.0" cy="232.2" r="6" fill="#38bdf8"/>
-<text x="295.0" y="224.2" fill="#38bdf8" font-size="11">rmsnorm_residual/unrolled</text>
-<circle cx="285.0" cy="215.5" r="6" fill="#22c55e"/>
-<text x="295.0" y="207.5" fill="#22c55e" font-size="11">rmsnorm_residual/neon</text>
-<circle cx="329.6" cy="219.1" r="6" fill="#ef4444"/>
-<text x="339.6" y="211.1" fill="#ef4444" font-size="11">rope/scalar</text>
-<circle cx="329.6" cy="205.9" r="6" fill="#38bdf8"/>
-<text x="339.6" y="197.9" fill="#38bdf8" font-size="11">rope/unrolled</text>
-<circle cx="329.6" cy="138.1" r="6" fill="#22c55e"/>
-<text x="339.6" y="130.1" fill="#22c55e" font-size="11">rope/neon</text>
-<circle cx="679.9" cy="388.4" r="6" fill="#ef4444"/>
-<text x="689.9" y="380.4" fill="#ef4444" font-size="11">int4_gemv/scalar</text>
-<circle cx="679.9" cy="312.8" r="6" fill="#38bdf8"/>
-<text x="689.9" y="304.8" fill="#38bdf8" font-size="11">int4_gemv/unrolled</text>
-<circle cx="679.9" cy="154.2" r="6" fill="#22c55e"/>
-<text x="689.9" y="146.2" fill="#22c55e" font-size="11">int4_gemv/neon</text>
-<text x="480.0" y="24" fill="#e2e8f0" font-size="15" text-anchor="middle">NEON memory roofline (roof = 66.3 GB/s)</text>
+<line x1="70.0" y1="289.5" x2="930.0" y2="-236.2" stroke="#f59e0b" stroke-width="2"/>
+<circle cx="285.0" cy="319.9" r="6" fill="#ef4444"/>
+<text x="295.0" y="311.9" fill="#ef4444" font-size="11">rmsnorm_residual/scalar</text>
+<circle cx="285.0" cy="227.1" r="6" fill="#38bdf8"/>
+<text x="295.0" y="219.1" fill="#38bdf8" font-size="11">rmsnorm_residual/unrolled</text>
+<circle cx="285.0" cy="208.2" r="6" fill="#22c55e"/>
+<text x="295.0" y="200.2" fill="#22c55e" font-size="11">rmsnorm_residual/neon</text>
+<circle cx="329.6" cy="220.6" r="6" fill="#ef4444"/>
+<text x="339.6" y="212.6" fill="#ef4444" font-size="11">rope/scalar</text>
+<circle cx="329.6" cy="208.5" r="6" fill="#38bdf8"/>
+<text x="339.6" y="200.5" fill="#38bdf8" font-size="11">rope/unrolled</text>
+<circle cx="329.6" cy="139.3" r="6" fill="#22c55e"/>
+<text x="339.6" y="131.3" fill="#22c55e" font-size="11">rope/neon</text>
+<circle cx="679.9" cy="384.3" r="6" fill="#ef4444"/>
+<text x="689.9" y="376.3" fill="#ef4444" font-size="11">int4_gemv/scalar</text>
+<circle cx="679.9" cy="307.7" r="6" fill="#38bdf8"/>
+<text x="689.9" y="299.7" fill="#38bdf8" font-size="11">int4_gemv/unrolled</text>
+<circle cx="679.9" cy="150.5" r="6" fill="#22c55e"/>
+<text x="689.9" y="142.5" fill="#22c55e" font-size="11">int4_gemv/neon</text>
+<text x="480.0" y="24" fill="#e2e8f0" font-size="15" text-anchor="middle">NEON memory roofline (roof = 73.7 GB/s)</text>
 <text x="480.0" y="548" fill="#94a3b8" font-size="12" text-anchor="middle">Arithmetic intensity (FLOP/byte, log2)</text>
 <text x="18" y="280.0" fill="#94a3b8" font-size="12" transform="rotate(-90 18 280.0)" text-anchor="middle">Attained GFLOP/s (log2)</text>
 </svg>

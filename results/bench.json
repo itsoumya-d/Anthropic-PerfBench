@@ -1,14 +1,14 @@
 {
-  "copy_bandwidth_gbps": 66.313,
+  "copy_bandwidth_gbps": 73.665,
   "records": [
-    {"kernel": "rmsnorm_residual", "variant": "scalar", "ms": 6.454000, "flops": 20971520, "bytes": 83886080, "gflops": 3.249, "gbps": 12.998},
-    {"kernel": "rmsnorm_residual", "variant": "unrolled", "ms": 2.488000, "flops": 20971520, "bytes": 83886080, "gflops": 8.429, "gbps": 33.716},
-    {"kernel": "rmsnorm_residual", "variant": "neon", "ms": 2.087000, "flops": 20971520, "bytes": 83886080, "gflops": 10.049, "gbps": 40.195},
-    {"kernel": "rope", "variant": "scalar", "ms": 1.733000, "flops": 16777216, "bytes": 50331648, "gflops": 9.681, "gbps": 29.043},
-    {"kernel": "rope", "variant": "unrolled", "ms": 1.508000, "flops": 16777216, "bytes": 50331648, "gflops": 11.125, "gbps": 33.376},
-    {"kernel": "rope", "variant": "neon", "ms": 0.738000, "flops": 16777216, "bytes": 50331648, "gflops": 22.733, "gbps": 68.200},
-    {"kernel": "int4_gemv", "variant": "scalar", "ms": 20.686000, "flops": 33554432, "bytes": 10518528, "gflops": 1.622, "gbps": 0.508},
-    {"kernel": "int4_gemv", "variant": "unrolled", "ms": 9.320000, "flops": 33554432, "bytes": 10518528, "gflops": 3.600, "gbps": 1.129},
-    {"kernel": "int4_gemv", "variant": "neon", "ms": 1.748000, "flops": 33554432, "bytes": 10518528, "gflops": 19.196, "gbps": 6.017}
+    {"kernel": "rmsnorm_residual", "variant": "scalar", "ms": 6.275000, "flops": 20971520, "bytes": 83886080, "gflops": 3.342, "gbps": 13.368},
+    {"kernel": "rmsnorm_residual", "variant": "unrolled", "ms": 2.357000, "flops": 20971520, "bytes": 83886080, "gflops": 8.898, "gbps": 35.590},
+    {"kernel": "rmsnorm_residual", "variant": "neon", "ms": 1.931000, "flops": 20971520, "bytes": 83886080, "gflops": 10.860, "gbps": 43.442},
+    {"kernel": "rope", "variant": "scalar", "ms": 1.761000, "flops": 16777216, "bytes": 50331648, "gflops": 9.527, "gbps": 28.581},
+    {"kernel": "rope", "variant": "unrolled", "ms": 1.551000, "flops": 16777216, "bytes": 50331648, "gflops": 10.817, "gbps": 32.451},
+    {"kernel": "rope", "variant": "neon", "ms": 0.747000, "flops": 16777216, "bytes": 50331648, "gflops": 22.459, "gbps": 67.378},
+    {"kernel": "int4_gemv", "variant": "scalar", "ms": 19.805000, "flops": 33554432, "bytes": 10518528, "gflops": 1.694, "gbps": 0.531},
+    {"kernel": "int4_gemv", "variant": "unrolled", "ms": 8.826000, "flops": 33554432, "bytes": 10518528, "gflops": 3.802, "gbps": 1.192},
+    {"kernel": "int4_gemv", "variant": "neon", "ms": 1.681000, "flops": 33554432, "bytes": 10518528, "gflops": 19.961, "gbps": 6.257}
   ]
 }
