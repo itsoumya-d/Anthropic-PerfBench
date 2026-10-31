@@ -1,0 +1,14 @@
+{
+  "copy_bandwidth_gbps": 66.313,
+  "records": [
+    {"kernel": "rmsnorm_residual", "variant": "scalar", "ms": 6.454000, "flops": 20971520, "bytes": 83886080, "gflops": 3.249, "gbps": 12.998},
+    {"kernel": "rmsnorm_residual", "variant": "unrolled", "ms": 2.488000, "flops": 20971520, "bytes": 83886080, "gflops": 8.429, "gbps": 33.716},
+    {"kernel": "rmsnorm_residual", "variant": "neon", "ms": 2.087000, "flops": 20971520, "bytes": 83886080, "gflops": 10.049, "gbps": 40.195},
+    {"kernel": "rope", "variant": "scalar", "ms": 1.733000, "flops": 16777216, "bytes": 50331648, "gflops": 9.681, "gbps": 29.043},
+    {"kernel": "rope", "variant": "unrolled", "ms": 1.508000, "flops": 16777216, "bytes": 50331648, "gflops": 11.125, "gbps": 33.376},
+    {"kernel": "rope", "variant": "neon", "ms": 0.738000, "flops": 16777216, "bytes": 50331648, "gflops": 22.733, "gbps": 68.200},
+    {"kernel": "int4_gemv", "variant": "scalar", "ms": 20.686000, "flops": 33554432, "bytes": 10518528, "gflops": 1.622, "gbps": 0.508},
+    {"kernel": "int4_gemv", "variant": "unrolled", "ms": 9.320000, "flops": 33554432, "bytes": 10518528, "gflops": 3.600, "gbps": 1.129},
+    {"kernel": "int4_gemv", "variant": "neon", "ms": 1.748000, "flops": 33554432, "bytes": 10518528, "gflops": 19.196, "gbps": 6.017}
+  ]
+}

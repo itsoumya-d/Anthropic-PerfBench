@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Anthropic-PerfBench WebGPU harness</title></head>
+<body style="background:#0b1020;color:#e2e8f0;font-family:ui-monospace,monospace">
+<h1>WebGPU kernel harness</h1>
+<p>Requires a WebGPU browser. This harness is provided for replay on hardware
+with WebGPU; the committed benchmark numbers are NEON results only.</p>
+<pre id="out">initializing...</pre>
+<script type="module">
+const out = document.getElementById('out');
+try {
+  if (!navigator.gpu) throw new Error('navigator.gpu unavailable');
+  const adapter = await navigator.gpu.requestAdapter();
+  const device = await adapter.requestDevice();
+  const shader = await fetch('./rmsnorm.wgsl').then(r => r.text())
+    + '\n' + await fetch('./rope.wgsl').then(r => r.text())
+    + '\n' + await fetch('./int4_gemv.wgsl').then(r => r.text());
+  const module = device.createShaderModule({ code: shader });
+  const info = await module.getCompilationInfo();
+  out.textContent = JSON.stringify({ ok: info.messages.length === 0, messages: [...info.messages] }, null, 2);
+} catch (error) {
+  out.textContent = String(error);
+}
+</script>
+</body>
+</html>
