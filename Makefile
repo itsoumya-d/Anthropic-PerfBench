@@ -1,6 +1,12 @@
 CC ?= cc
 ARCH := $(shell uname -m)
-CFLAGS ?= -O3 -std=c11 -Wall -Wextra -fno-math-errno -fno-vectorize -fno-slp-vectorize
+CFLAGS ?= -O3 -std=c11 -Wall -Wextra -fno-math-errno
+CC_IS_CLANG := $(shell $(CC) --version 2>/dev/null | grep -qi clang && echo 1)
+ifeq ($(CC_IS_CLANG),1)
+CFLAGS += -fno-vectorize -fno-slp-vectorize
+else
+CFLAGS += -fno-tree-vectorize -fno-tree-slp-vectorize
+endif
 LDFLAGS ?= -lm
 ifeq ($(ARCH),arm64)
 CFLAGS += -DUSE_NEON
