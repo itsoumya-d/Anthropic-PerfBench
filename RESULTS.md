@@ -12,6 +12,7 @@
 | RMSNorm/RoPE size | 4,194,304 elements |
 | INT4 GEMV shape | 4096 × 4096, group 32 |
 | WGSL execution | Not run (no WebGPU runtime) |
+| WASM execution | Node v26.3.0, wasm32 SIMD128, 2026-11-04 |
 
 ## Correctness
 
@@ -37,6 +38,43 @@
 
 Best time over 80 iterations for RMSNorm/RoPE and 20 for GEMV. Results vary a
 few percent between runs.
+
+## WebAssembly SIMD INT4 GEMV
+
+Date 2026-11-04. Apple M2 (arm64), Node v26.3.0, Rust 1.99.1, wasm32 with
+SIMD128. Same 4096 × 4096 shape and the same packing contract as the C harness.
+Best of 5 repetitions, 3 timed iterations per repetition:
+
+| Variant | ms | GFLOP/s | GB/s | Speedup |
+|---|---:|---:|---:|---:|
+| f32 scalar | 16.040 | 2.09 | 4.18 | — |
+| INT4 scalar | 16.766 | 2.00 | 0.63 | 1.00× |
+| INT4 SIMD | 2.283 | **14.70** | 4.59 | **7.34×** |
+
+Repeated runs on the fanless MacBook Air produced 11.0–14.7 GFLOP/s for SIMD
+(6.7×–9.5× over scalar); the table records the best run, and
+`wasm/results/bench.json` retains the samples and medians. This is not a
+sustained-throughput claim.
+
+Correctness: `wasm/gen_fixtures.py` computes a 16 × 256 × 32 fixture in Python
+float64; `wasm/parity.mjs` checks Rust scalar and Rust SIMD against it, checks
+scalar/SIMD agreement, and checks that the activation buffer is unchanged. Max
+absolute error: 1.5e-7. CI runs `cargo test` natively, builds the wasm module,
+runs parity, and runs a 1024 × 1024 quick benchmark.
+
+Roofline: 0.625 bytes per weight (0.5 packed + 0.125 scale amortized) and 2 FLOP
+per weight gives AI ≈ 3.2 FLOP/byte. Against the measured 66.31 GB/s copy roof
+the memory roof is ≈ 212 GFLOP/s, so the 14.70 GFLOP/s result is ≈ 7% of the
+memory roof and instruction-bound, like the NEON kernel. The WASM result is
+≈ 77% of the separate NEON harness (19.20 GFLOP/s); the harnesses differ, so
+this is context, not a controlled cross-runtime benchmark.
+
+Reproduce:
+
+```bash
+make wasm-test
+make wasm-bench
+```
 
 ## Roofline
 
@@ -83,6 +121,7 @@ The roofline SVG is `results/roofline.svg`.
   script is `scripts/run-perf-stat.sh`; no OCI instance/credentials available.
 - **WebGPU WGSL** timing via Chrome timestamp queries: shaders and an HTML
   harness are provided; no WebGPU-capable browser automation was configured.
+  The WASM SIMD path *was* executed and measured; it is not a WebGPU result.
 - **Roofline compute ceiling**: only the measured memory roof is plotted. A
   compute roof would require a peak-FLOPs microbenchmark or hardware counter
   calibration.

@@ -32,7 +32,17 @@ test: build/test_kernels
 bench: build/bench
 	./build/bench results/bench.json
 
-clean:
-	rm -rf build results/*.json
+wasm-build:
+	cargo build --release --manifest-path wasm/Cargo.toml --target wasm32-unknown-unknown
 
-.PHONY: all test bench clean
+wasm-test: wasm-build
+	cargo test --manifest-path wasm/Cargo.toml
+	node wasm/parity.mjs
+
+wasm-bench: wasm-build
+	node wasm/bench.mjs
+
+clean:
+	rm -rf build results/*.json wasm/target
+
+.PHONY: all test bench wasm-build wasm-test wasm-bench clean
